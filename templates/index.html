@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arduino LED Brightness Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <script type=text/javascript src="{{ url_for('static', filename='jquery-3.6.0.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+          $("input").change(function(){
+            var num = document.getElementById("brightness-range").value;
+            $.post("http://127.0.0.1:5000/", {value: num});
+          });
+        });
+        </script>
+  </head>
+  <body>
+      <header>
+        <h1>Arduino LED Brightness Control</h1>
+      </header>
+      <main>
+        <div class="container">
+          <div class="container-item">
+            <p>Dim&nbsp;</p>
+          </div>
+          <div class="container-item">
+            <input type="range" id="brightness-range" name="range" min="0" max="255">
+          </div>
+          <div class="container-item">
+            <p>
+              &nbsp;Bright
+            </p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
